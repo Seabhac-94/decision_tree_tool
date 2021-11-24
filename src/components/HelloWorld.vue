@@ -1,45 +1,77 @@
 <template>
-  <div id="app">
-      <img
-        v-bind:src="picture"
-        :alt="`${firstName} ${lastName}`"
-        :class="gender"
-      />
-      <h1>{{firstName}} {{lastName}}</h1>
-      <h3>Email: {{email}}</h3>
-      <button :class="gender" @click="getUser()">Get Random User</button>
+    <div id="app" class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="js-step-container">
+            <h3> "WASAP" </h3>
+
+            <!-- <div v-for="(item, index) in steps" :key="item.question" :data-step-id="index" class="card mb-2 js-step-card" :class="isLastCard(index)"> -->
+              <!-- <div class="card-body"> -->
+                <!-- <div class="card-title">{{ item.question }}</div> -->
+                <!-- <StepBtn :answers="item.answers" @next-step="loadStep" /> -->
+              <!-- </div> -->
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
 <script>
+
+// eslint-disable-next-line no-unused-vars
+import getDecisionTreeData from './Datatree.js'
+
 export default {
   name: 'HelloWorld',
-  data() {
-    return {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john@gmail.com',
-      gender: 'male',
-      picture: 'https://randomuser.me/api/portraits/men/10.jpg',
+  //components: {
+    //StepBtn
+  //},
+  created: function () {
+   this.steps.push(getDecisionTreeData("higher", 1));
+  },
+  computed: {
+    randomNumber: function () {
+      return Math.floor(Math.random() * 1000);
     }
   },
+  data() {
+    return {
+      steps: [],
+      stepCounter: 1
+    };
+  },
   methods: {
-    async getUser() {
-      const res = await fetch('https://randomuser.me/api')
-      const { results } = await res.json()
+    loadStep(btn, nextStep, lastStep) {
+      let card = btn.closest(".js-step-card"),
+        stepCount = parseInt(card.dataset.stepId) + 1,
+        classes = card.classList,
+        currentCard = false;
 
-      // console.log(results)
+      if (classes.contains("current")) {
+        classes.remove("current");
+        currentCard = true;
+      }
 
-      this.firstName = results[0].name.first
-      this.lastName = results[0].name.last
-      this.email = results[0].email
-      this.gender = results[0].gender
-      this.picture = results[0].picture.large
+      if (!lastStep && currentCard) {
+       this.steps.push(getDecisionTreeData("higher", nextStep));
+      } else if (!lastStep && !currentCard) {
+        //reset steps to clicked
+        this.steps.length = stepCount;
+        this.stepCounter = stepCount;
+        this.steps.push(getDecisionTreeData("higher", nextStep));
+      } else {
+        alert("Last Step");
+      }
+    },
+    isLastCard(index) {
+      if (this.steps.length - 1 === index) {
+        return "current";
+      }
     }
   }
 }
 </script>
-
 
 
 
@@ -60,4 +92,5 @@ li {
 a {
   color: #42b983;
 }
+
 </style>
