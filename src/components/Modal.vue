@@ -3,10 +3,11 @@
       <div class="row">
         <div class="col-md-6">
           <div class="js-step-container">
-            <div v-for="(item, index) in steps" :key="item.question" :data-step-id="index" class="card mb-2 js-step-card" >
+            <div v-for="(item, label) in [visible]" :key="item.title" :data-step-id="label" class="card mb-2 js-step-card" >
               <div class="card-body">
-                <div class="card-title">{{ item.question }}</div>
-                <StepBtn :answers="item.answers" @next-step="loadStep" />
+                <div class="card-title">{{ item.title }}</div>
+                <p>{{ item.description }}</p>
+                <StepBtn :answers="item.children" @next-step="loadStep" />
               </div>
             </div>
           </div>
@@ -16,25 +17,52 @@
 </template>;
 
 <script>
-import DataTree from "./Datatree";
+import tree from "./tree";
 import StepBtn from './StepBtn.vue'
 
 export default {
   name: "Test",
   components: {
     StepBtn
+
   },
-  mixins: [DataTree],
+  mixins: [tree],
   created: function () {
-   this.steps.push(this.getDecisionTreeData("higher", 1));
+   this.object = this.getFullObject("origin");
+   this.visible = this.object;
+
   },
   data() {
     return {
-      steps: [],
-      stepCounter: 1
+      stepCounter: 1,
+      object: {},
+      visible: {}
+
     };
   },
   methods: {
+    loadData(branch, id){
+        let decisionTreeData = this.object;
+
+        return decisionTreeData[branch][id];
+
+    },
+
+    getSubObject(object, branch) {
+        let final = "";
+
+        for(let i = 0; i < object.children.length; i++) {
+            let subObject = object.children[i];
+
+            if (subObject.label == branch) {
+                final = subObject;
+                break;
+
+            }
+        }
+        return final;
+    },
+
     loadStep(btn, nextStep) {
       let card = btn.closest(".js-step-card"),
         stepCount = parseInt(card.dataset.stepId) + 1,
@@ -44,17 +72,20 @@ export default {
       if (classes.contains("current")) {
         classes.remove("current");
         currentCard = true;
-      }
 
+      }
       if (currentCard) {
-       this.steps.push(this.getDecisionTreeData("higher", nextStep));
+        this.visible = this.getSubObject(this.visible, nextStep);
+
       } else if (!currentCard) {
         //reset steps to clicked
-        this.steps.length = stepCount;
+        this.object.length = stepCount;
         this.stepCounter = stepCount;
-        this.steps.push(this.getDecisionTreeData("higher", nextStep));
+        this.visible = this.getSubObject(this.visible, nextStep);
+
       } else {
         alert("Last Step");
+
       }
     }
   }
