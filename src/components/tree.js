@@ -45,72 +45,72 @@ export default {
              "children": [
               {
                "label": "Money",
-               "title": "",
-               "description": "lorem ipsum",
+               "title": "Money runs the world, what version do you want?",
+               "description": "Since the future is now the present, we can pay in several ways (e.g. the latest invention: Brain WiFi)",
                "children": [
                 {
                  "label": "In-hand",
-                 "title": "",
-                 "description": "lorem ipsum",
+                 "title": "Is worth more a bird in your hand that 100 flying away",
+                 "description": "true, true... Also since it's SANDBOX mode just use the test connection with the inhand acquirer. BYEEEEE",
                  "children": null
                 },
                 {
                  "label": "Debt",
-                 "title": "",
-                 "description": "lorem ipsum",
+                 "title": "AH... you like to be in debt",
+                 "description": "2 things will follow you all your life. One is debt and the other one is death, but the only one that allows to be cheated is death",
                  "children": null
                 },
                 {
                  "label": "Brain Wifi",
-                 "title": "",
-                 "description": "lorem ipsum",
+                 "title": "Want to sell your favourite Pokemon ft Balenciaga NFT? ",
+                 "description": "Remember that Brain wifi is only available in Europe, and it has a pretty simple setup: For northern countries, just buy the new iChip for 300$ (charger not included). For the following countries, iChip is not available: Spain, Madagascar, Russia. However, you can always get a router implanted in your skull and walk around enjoying your new BrainWifi! Of course since this is SANDBOX you don't need any special setup.",
                  "children": [
                   {
-                   "label": "Rock band",
-                   "title": "",
-                   "description": "lorem ipsum",
+                   "label": "My market is not in Europe",
+                   "title": "You don't live in one of the supported countries?",
+                   "description": "That's too bad! You can always pay using stripe or something I heard some people still use that",
                    "children": null
                   },
                   {
-                   "label": "TV show",
-                   "title": "",
-                   "description": "lorem ipsum",
+                   "label": "NFT?",
+                   "title": "What is an NFT?",
+                   "description": "It stands for Not Fake Tacos (I think), and it's becoming the new promising financial future (not fake at all)",
                    "children": null
                   },
                   {
-                   "label": "No logo",
-                   "title": "",
-                   "description": "lorem ipsum",
+                   "label": "I'm not following anymore",
+                   "title": "It's easy to get lost",
+                   "description": "This is just a concept anyways, I needed to populate the object with something to show and I did not want to use a bunch of lorem ipsum.",
                    "children": null
                   }
                  ]
                 },
                 {
                  "label": "Orange",
-                 "title": "",
-                 "description": "lorem ipsum",
+                 "title": "Yes Orange",
+                 "description": "I guess you can pay with a color? I was out of ideas idk",
                  "children": null
                 }
                ]
               },
               {
-               "label": "Hoodie",
-               "title": "",
+               "label": "WIP",
+               "title": "Work in Progress",
                "description": "lorem ipsum",
                "children": [
                 {
-                 "label": "Gray",
+                 "label": "WIP5",
                  "title": "",
                  "description": "lorem ipsum",
                  "children": null
                 },
                 {
-                 "label": "Blue",
+                 "label": "WIP3",
                  "title": "",
                  "description": "lorem ipsum",
                  "children": [
                   {
-                   "label": "TV show",
+                   "label": "WIP4",
                    "title": "",
                    "description": "lorem ipsum",
                    "children": null
@@ -124,31 +124,31 @@ export default {
                  ]
                 },
                 {
-                 "label": "Green",
+                 "label": "WIP7",
                  "title": "",
                  "description": "lorem ipsum",
                  "children": null
                 },
                 {
-                 "label": "Pink",
+                 "label": "WIP8",
                  "title": "",
                  "description": "lorem ipsum",
                  "children": null
                 },
                 {
-                 "label": "Brown",
+                 "label": "WIP9",
                  "title": "",
                  "description": "lorem ipsum",
                  "children": null
                 },
                 {
-                 "label": "Black",
+                 "label": "WIPWIP",
                  "title": "",
                  "description": "lorem ipsum",
                  "children": null
                 },
                 {
-                 "label": "Red",
+                 "label": "WIPWIPWIP",
                  "title": "",
                  "description": "lorem ipsum",
                  "children": null
@@ -156,7 +156,7 @@ export default {
                ]
               },
               {
-               "label": "White",
+               "label": "WIP2",
                "title": "",
                "description": "lorem ipsum",
                "children": null
@@ -167,50 +167,50 @@ export default {
           },
           {
            "label": "Food",
-           "title": "c",
-           "description": "lorem ipsum",
+           "title": "tHIS AiN'T tHUISBEZORGD CHaMP",
+           "description": "SO don't even continue this way if you really want food",
            "children": [
             {
-             "label": "Ramen noodles",
-             "title": "",
-             "description": "lorem ipsum",
+             "label": "I REALLY FOOD",
+             "title": "You....Really food?",
+             "description": "DO u english bruv",
              "children": null
             },
             {
-             "label": "Soda pop",
-             "title": "",
-             "description": "lorem ipsum",
+             "label": "GIMME",
+             "title": "Look I told you",
+             "description": "There is no food here, just take a break and get a sandwich or something",
              "children": [
               {
-               "label": "Cola",
-               "title": "",
-               "description": "lorem ipsum",
+               "label": "FOOD?",
+               "title": "Dude",
+               "description": "...",
                "children": null
               },
               {
-               "label": "Lemon",
-               "title": "",
-               "description": "lorem ipsum",
+               "label": "Pleeease?",
+               "title": "Ah now we're talking",
+               "description": "However there is no food I can send you I'm just a JSON",
                "children": null
               },
               {
                "label": "Orange",
-               "title": "",
-               "description": "lorem ipsum",
+               "title": "WHATEVER, I'm leaving",
+               "description": "",
                "children": null
               },
               {
                "label": "Apple",
-               "title": "",
-               "description": "lorem ipsum",
+               "title": "WHATEVER, I'm leaving",
+               "description": "",
                "children": null
               }
              ]
             },
             {
              "label": "Bananas",
-             "title": "",
-             "description": "lorem ipsum",
+             "title": "What?",
+             "description": "I declare this option out of scope",
              "children": null
             }
            ]
