@@ -3,14 +3,14 @@
       <div class="row">
         <div class="col-md-6">
           <div class="js-step-container">
-            <div class="card-body">
-                <button @click="goBack($event, previous)" :class="{active:index == btnSelected}" class="btn btn-outline-primary" type="button"> Go Back </button>
+            <button @click="goBack($event, previous)" :class="{active:index == btnSelected}" class="btn backbtn btn-outline-primary" type="button"> Go Back </button>
+            <div class="card-node">
                 <div class="card-title">{{ this.visible.title }}</div>
-                    <p>{{ this.visible.description }}</p>
-                </div>
+                <p>{{ this.visible.description }}</p>
                 <div v-for="(item, label) in [visible]" :key="item.title" :data-step-id="label" class="card mb-2 js-step-card" >
                     <StepBtn :answers="item.children" @next-step="loadStep" />
                 </div>
+            </div>
           </div>
         </div>
       </div>
@@ -181,8 +181,22 @@ export default {
 <style>
 .card {
   padding: 1.5rem;
-  border: solid 1px #42b983;
-  margin-bottom: 5rem;
 }
+
+.card-node {
+  padding: 2rem;
+  border: solid 2px #42b983;
+  border-radius: 0.8rem;
+  margin: 0.5rem;
+
+}
+
+.card-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 4rem;
+}
+
+
 
 </style>

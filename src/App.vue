@@ -23,14 +23,18 @@ color: #2c3e50;
 margin-top: 60px;
 }
 button {
-background-color: #10776e; /* Green */
-border: none;
-margin: 5px;
-color: white;
-padding: 15px 32px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16px;
+    background-color: #10776e; /* Green */
+    border: 0.3rem #ffff;
+    outline: 1px solid #ffff;
+    outline-radius: 0.5rem;
+    outline-offset: -0.1rem;
+    margin: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0.5rem;
+    font-size: 16px;
 }
 </style>
