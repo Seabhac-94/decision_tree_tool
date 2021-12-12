@@ -3,13 +3,14 @@
       <div class="row">
         <div class="col-md-6">
           <div class="js-step-container">
-            <div v-for="(item, label) in [visible]" :key="item.title" :data-step-id="label" class="card mb-2 js-step-card" >
-              <div class="card-body">
-                <div class="card-title">{{ item.title }}</div>
-                <p>{{ item.description }}</p>
-                <StepBtn :answers="item.children" @next-step="loadStep" />
-              </div>
-            </div>
+            <div class="card-body">
+                <button @click="goBack($event, previous)" :class="{active:index == btnSelected}" class="btn btn-outline-primary" type="button"> Go Back </button>
+                <div class="card-title">{{ this.visible.title }}</div>
+                    <p>{{ this.visible.description }}</p>
+                </div>
+                <div v-for="(item, label) in [visible]" :key="item.title" :data-step-id="label" class="card mb-2 js-step-card" >
+                    <StepBtn :answers="item.children" @next-step="loadStep" />
+                </div>
           </div>
         </div>
       </div>
@@ -30,13 +31,15 @@ export default {
   created: function () {
    this.object = this.getFullObject("origin");
    this.visible = this.object;
+   this.logCurrent();
+
 
   },
   data() {
     return {
-      stepCounter: 1,
       object: {},
-      visible: {}
+      visible: {},
+      previous: []
 
     };
   },
@@ -49,6 +52,7 @@ export default {
     },
 
     getSubObject(object, branch) {
+
         let final = "";
 
         for(let i = 0; i < object.children.length; i++) {
@@ -63,9 +67,84 @@ export default {
         return final;
     },
 
+    nodeCheck(sub, branch) {
+
+        let check = "None";
+        for(let i = 0; i < sub.children.length; i++) {
+
+            let child = sub.children[i];
+            if (child.label == branch) {
+                check = child.label;
+                break;
+            }
+        }
+        return check;
+    },
+
+    logCurrent() {
+        console.log("Current State");
+        console.log("Visible", this.visible);
+        console.log("Previous", this.previous);
+    },
+
+
+    getPrevious() {
+
+        let sub = this.object;
+        for (let i=0; i<this.previous.length; i++) {
+            for ( let j=0; j<sub.children.length; j++) {
+                if(sub.children[j].label == this.previous[i].label){
+                    sub = sub.children[j];
+                    break;
+                }
+            }
+        }
+        this.previous.pop(this.previous.length);
+
+        return sub;
+    },
+
     loadStep(btn, nextStep) {
+    this.previous.push({'label': this.visible.label });
+
+
       let card = btn.closest(".js-step-card"),
-        stepCount = parseInt(card.dataset.stepId) + 1,
+        classes = card.classList,
+        currentCard = false;
+
+      if (classes.contains("current")) {
+        classes.remove("current");
+        currentCard = true;
+
+      }
+
+      if (currentCard) {
+        //let thing = document.getElementsByClassName('cardlab')[0].firstChild.data;
+        this.visible = this.getSubObject(this.visible, nextStep);
+
+
+        console.log("Click");
+
+
+
+      } else if (!currentCard) {
+        //reset steps to clicked
+
+        this.visible = this.getSubObject(this.visible, nextStep);
+        console.log("Forward - Selected child");
+
+
+      } else {
+        alert("Last Step");
+
+      }
+    this.logCurrent();
+
+    },
+
+    goBack(event, previous) { //btn param
+
+      let card = document.getElementsByClassName('card')[0] ,
         classes = card.classList,
         currentCard = false;
 
@@ -75,19 +154,25 @@ export default {
 
       }
       if (currentCard) {
-        this.visible = this.getSubObject(this.visible, nextStep);
+
+
+        console.log("Go back - Now Reset");
+
+        this.visible = this.getPrevious(this.object, previous);
+
 
       } else if (!currentCard) {
-        //reset steps to clicked
-        this.object.length = stepCount;
-        this.stepCounter = stepCount;
-        this.visible = this.getSubObject(this.visible, nextStep);
+        // reset steps to clicked
 
-      } else {
-        alert("Last Step");
+        console.log("Go back - Last step of Previous array");
 
-      }
+        this.visible = this.getPrevious(this.object, previous);
+
     }
+    this.logCurrent();
+
+  }
+
   }
 
 };

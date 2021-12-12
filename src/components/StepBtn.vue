@@ -20,7 +20,7 @@ export default {
         //activeBtns = clickedBtn.parentNode.getElementsByClassName("active"),
         lastStep = false,
         ids = item.label;
-        console.log(ids);
+        //console.log(ids);
 
       this.btnSelected = index;
 
