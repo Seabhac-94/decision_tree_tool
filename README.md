@@ -1,4 +1,4 @@
-# adyen_decision_tool
+# tree_decision_tool
 
 ## Project setup
 ```
