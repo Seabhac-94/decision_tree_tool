@@ -1,6 +1,7 @@
 
 export default {
   methods: {
+    // This function represents the fetch of the whole tree (is not called again)
     getFullObject(branch) {
       let decisionTreeData = {
         origin: {
