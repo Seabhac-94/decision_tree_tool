@@ -44,6 +44,7 @@ export default {
     };
   },
   methods: {
+
     loadData(branch, id){
         let decisionTreeData = this.object;
 
@@ -53,7 +54,7 @@ export default {
 
     getSubObject(object, branch) {
 
-        let final = "";
+        let final = "None";
 
         for(let i = 0; i < object.children.length; i++) {
             let subObject = object.children[i];
@@ -67,22 +68,9 @@ export default {
         return final;
     },
 
-    nodeCheck(sub, branch) {
-
-        let check = "None";
-        for(let i = 0; i < sub.children.length; i++) {
-
-            let child = sub.children[i];
-            if (child.label == branch) {
-                check = child.label;
-                break;
-            }
-        }
-        return check;
-    },
-
+    // Logging function
     logCurrent() {
-        console.log("Current State");
+        console.log("Current Node data");
         console.log("Visible", this.visible);
         console.log("Previous", this.previous);
     },
@@ -103,6 +91,7 @@ export default {
 
         return sub;
     },
+
 
     loadStep(btn, nextStep) {
     this.previous.push({'label': this.visible.label });
@@ -142,6 +131,7 @@ export default {
 
     },
 
+
     goBack(event, previous) { //btn param
 
       let card = document.getElementsByClassName('card')[0] ,
@@ -153,25 +143,20 @@ export default {
         currentCard = true;
 
       }
+
       if (currentCard) {
-
-
-        console.log("Go back - Now Reset");
-
         this.visible = this.getPrevious(this.object, previous);
 
 
       } else if (!currentCard) {
         // reset steps to clicked
-
-        console.log("Go back - Last step of Previous array");
-
         this.visible = this.getPrevious(this.object, previous);
 
-    }
+      }
+
     this.logCurrent();
 
-  }
+    }
 
   }
 
@@ -179,6 +164,7 @@ export default {
 </script>
 
 <style>
+
 .card {
   padding: 1.5rem;
 }
@@ -196,7 +182,6 @@ export default {
   font-weight: bold;
   margin-bottom: 4rem;
 }
-
 
 
 </style>

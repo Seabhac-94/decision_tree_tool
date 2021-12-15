@@ -5,22 +5,28 @@
 </template>
 
 <script>
+
 export default {
+
   name: "StepBtn",
   emits: ["next-step"],
   props: ["answers"],
+
   data() {
+
     return {
       btnSelected: undefined
     };
+
   },
+
   methods: {
+    
     btnClick(event, item, index) {
       let clickedBtn = event.target,
         //activeBtns = clickedBtn.parentNode.getElementsByClassName("active"),
         lastStep = false,
         ids = item.label;
-        //console.log(ids);
 
       this.btnSelected = index;
 
