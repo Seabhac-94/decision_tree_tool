@@ -39,7 +39,7 @@ export default {
     return {
       object: {},
       visible: {},
-      previous: []
+      previous: [] // would be nice to loopf through this to create breadcrumbs (in the end is same function to be used for each div)
 
     };
   },
@@ -54,7 +54,7 @@ export default {
 
     getSubObject(object, branch) {
 
-        let final = "None";
+        let final = null;
 
         for(let i = 0; i < object.children.length; i++) {
             let subObject = object.children[i];
@@ -111,23 +111,15 @@ export default {
         //let thing = document.getElementsByClassName('cardlab')[0].firstChild.data;
         this.visible = this.getSubObject(this.visible, nextStep);
 
-
-        console.log("Click");
-
-
-
       } else if (!currentCard) {
         //reset steps to clicked
-
         this.visible = this.getSubObject(this.visible, nextStep);
-        console.log("Forward - Selected child");
-
 
       } else {
         alert("Last Step");
 
       }
-    this.logCurrent();
+    //this.logCurrent();
 
     },
 
@@ -154,7 +146,7 @@ export default {
 
       }
 
-    this.logCurrent();
+    //this.logCurrent();
 
     }
 

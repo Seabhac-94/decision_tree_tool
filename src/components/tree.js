@@ -6,7 +6,7 @@ export default {
       let decisionTreeData = {
         origin: {
          "label": "origin",
-         "title": "Welcome to ADT, what do you want to do?",
+         "title": "Welcome to TREECONCEPT, what do you want to do?",
          "description": "Here you can choose from options and start some flow",
          "children": [
           {
