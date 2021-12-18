@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex gap-2">
-    <button v-for="(item, label) in answers" :key="label" @click="btnClick($event, item, index)" :class="{active:index == btnSelected}" class="btn btn-outline-primary" type="button">{{ item.label }}</button>
+    <button v-for="(item, label) in answers" :key="label" @click="btnClick($event, item, index)" class="btn btn-outline-primary" type="button">{{ item.label }}</button>
   </div>
 </template>
 

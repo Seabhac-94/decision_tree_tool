@@ -14,6 +14,7 @@ export default {
 };
 </script>
 <style>
+
 #app {
 font-family: 'Avenir', Helvetica, Arial, sans-serif;
 -webkit-font-smoothing: antialiased;
@@ -22,19 +23,38 @@ text-align: center;
 color: #2c3e50;
 margin-top: 60px;
 }
+
 button {
-    background-color: #10776e; /* Green */
-    border: 0.3rem #ffff;
-    outline: 1px solid #ffff;
-    outline-radius: 0.5rem;
-    outline-offset: -0.1rem;
-    margin: 5px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 0.5rem;
-    font-size: 16px;
+  background-color: #0abf53; /* Green */
+  border: 0.3rem #ffff;
+  outline: 1px solid #ffff;
+  outline-offset: -0.1rem;
+  margin: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 0.5rem;
+  font-size: 16px;
+}
+
+.breadcrumb {
+  background-color: #ffff; /* Green */
+  outline: 1px solid #0abf53;
+  outline-offset: -0.1rem;
+  color: #0abf53;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 0.5rem;
+  font-size: 12px;
+
+}
+
+.bc-container {
+  margin-left:0;
+  position: relative;
 }
 </style>

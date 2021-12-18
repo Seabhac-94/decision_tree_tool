@@ -3,7 +3,9 @@
       <div class="row">
         <div class="col-md-6">
           <div class="js-step-container">
-            <button @click="goBack($event, previous)" :class="{active:index == btnSelected}" class="btn backbtn btn-outline-primary" type="button"> Go Back </button>
+            <div class="bc-container">
+              <button v-for="item in previous" v-bind:key="item.label" @click="goBack($event, item.label)" class="btn breadcrumb btn-outline-primary" type="button">{{item.label}}</button>
+            </div>
             <div class="card-node">
                 <div class="card-title">{{ this.visible.title }}</div>
                 <p>{{ this.visible.description }}</p>
@@ -31,8 +33,6 @@ export default {
   created: function () {
    this.object = this.getFullObject("origin");
    this.visible = this.object;
-   this.logCurrent();
-
 
   },
   data() {
@@ -76,77 +76,39 @@ export default {
     },
 
 
-    getPrevious() {
+    getPrevious(previous) {
 
         let sub = this.object;
-        for (let i=0; i<this.previous.length; i++) {
+        let ind =  this.previous.findIndex(x => x.label === previous);
+        let temp = this.previous.slice(0, ind +1);
+        
+
+        for (let i=0; i<temp.length; i++) {
             for ( let j=0; j<sub.children.length; j++) {
-                if(sub.children[j].label == this.previous[i].label){
+                if(sub.children[j].label == temp[i].label){
                     sub = sub.children[j];
                     break;
                 }
             }
         }
-        this.previous.pop(this.previous.length);
+        this.previous.length = ind;
 
         return sub;
     },
 
 
     loadStep(btn, nextStep) {
-    this.previous.push({'label': this.visible.label });
 
+      this.previous.push({'label': this.visible.label });
+      this.visible = this.getSubObject(this.visible, nextStep);
 
-      let card = btn.closest(".js-step-card"),
-        classes = card.classList,
-        currentCard = false;
-
-      if (classes.contains("current")) {
-        classes.remove("current");
-        currentCard = true;
-
-      }
-
-      if (currentCard) {
-        //let thing = document.getElementsByClassName('cardlab')[0].firstChild.data;
-        this.visible = this.getSubObject(this.visible, nextStep);
-
-      } else if (!currentCard) {
-        //reset steps to clicked
-        this.visible = this.getSubObject(this.visible, nextStep);
-
-      } else {
-        alert("Last Step");
-
-      }
-    //this.logCurrent();
-
+      //this.logCurrent();
     },
 
 
     goBack(event, previous) { //btn param
 
-      let card = document.getElementsByClassName('card')[0] ,
-        classes = card.classList,
-        currentCard = false;
-
-      if (classes.contains("current")) {
-        classes.remove("current");
-        currentCard = true;
-
-      }
-
-      if (currentCard) {
-        this.visible = this.getPrevious(this.object, previous);
-
-
-      } else if (!currentCard) {
-        // reset steps to clicked
-        this.visible = this.getPrevious(this.object, previous);
-
-      }
-
-    //this.logCurrent();
+        this.visible = this.getPrevious(previous);
 
     }
 
@@ -163,7 +125,7 @@ export default {
 
 .card-node {
   padding: 2rem;
-  border: solid 2px #42b983;
+  border: solid 2px #0abf53;
   border-radius: 0.8rem;
   margin: 0.5rem;
 
