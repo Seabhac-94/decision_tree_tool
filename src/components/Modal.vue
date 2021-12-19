@@ -116,26 +116,3 @@ export default {
 
 };
 </script>
-
-<style>
-
-.card {
-  padding: 1.5rem;
-}
-
-.card-node {
-  padding: 2rem;
-  border: solid 2px #0abf53;
-  border-radius: 0.8rem;
-  margin: 0.5rem;
-
-}
-
-.card-title {
-  font-size: 25px;
-  font-weight: bold;
-  margin-bottom: 4rem;
-}
-
-
-</style>
